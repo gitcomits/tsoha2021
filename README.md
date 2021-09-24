@@ -25,3 +25,29 @@ Sovelluksen ominaisuuksia:
     
     Opettaja pystyy näkemään kurssistaan tilaston, keitä opiskelijoita on kurssilla ja mitkä kurssin tehtävät kukin on ratkonut.
 
+
+-----------------
+24.9.2021
+
+Sovellusta on mahdollista testata osoitteessa:
+
+
+https://onlin3school.herokuapp.com/
+
+
+Tämän hetkinen versio toimii kirjautumisen osin, sivuilla ei ole vielä muuta sisältöä.
+
+Rekisteröityminen
+	- käyttäjä syöttää sähköpostin
+			   nimen 
+			   valitsee ryhmän johon kuuluu
+			   salasanan
+			   salasanan varmennuksen
+	
+	Ohjelma tarkistaa että sähköposti on valiidi, ettei käyttäjätunnus ole jo varattu, ettei sähköposti ole jo varattu sekä salasanan täsmäämisen
+	Tämän jälkeen ne tallennetaan tietokantaan ja käyttäjä ohjautuu sisäänkirjautumis sivulle
+	Onnistuneen sisäänkirjautumisen jälkeen henkilö pysyy sisään kirjautuneena kunns kirjautuu ulos 'Logout' painikkeella
+	Riippuen siitä onko kirjautunut opiskelijana tai opettajana näkyy/ei näy Upload courses linkki (ei toiminnassa vielä)
+	Account sivu näyttää kirjautuneen tiedot
+
+ 
