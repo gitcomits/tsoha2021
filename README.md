@@ -51,3 +51,4 @@ Rekisteröityminen
 	Account sivu näyttää kirjautuneen tiedot
 
  
+SQL Schema ei sisälly repositoryyn koska kanta luodaan ohjalmassa olevien db luokkien kautta. 
