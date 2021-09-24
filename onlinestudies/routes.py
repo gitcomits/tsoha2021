@@ -61,7 +61,7 @@ def account():
 
 
 
-@app.route("/upload", methods=['GET', 'POST'])
-def upload():
-    form = UploadCourseForm()
-    return render_template("upload.html", title="Upload Courses")
+#@app.route("/upload", methods=['GET', 'POST'])
+#def upload():
+#    form = UploadCourseForm()
+#    return render_template("upload.html", title="Upload Courses")
