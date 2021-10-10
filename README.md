@@ -52,3 +52,40 @@ Rekisteröityminen
 
  
 SQL Schema ei sisälly repositoryyn koska kanta luodaan ohjalmassa olevien db luokkien kautta. 
+
+
+-----------------------------------------------------------
+10.10.2021
+
+Sovellus on testattavissa:
+
+https://onlin3school.herokuapp.com/
+
+
+Seuraavat toiminnot ovat implementoituja:
+
+	Rekisteröityminen joko 
+		- opettaja, oikeuksilla syöttää kursseja
+		- opiskelija, ei oikeuksia syöttää kursseja
+
+	Kurssien syöttäminen
+		- kurssien syöttäminen tapahtuu opettajan oikeuksilla
+		- kurssia syötettäessä syötetään myös testikyselyt ja niiden vastaukset
+                - kysymykset ja vastaukset tallentuvat omaan kantaan
+
+	Kurssit
+		- syötetyt kurssit näkyvät aloitussivulla
+
+	
+	Käyttäjäoikeuksien ylläpito
+		- kirjautuneena käyttäjä voi vaihtaa 
+			- profiili kuvan
+			- sähköposti osoitteensa
+			- käyttäjätunnuksensa
+
+
+ToDo
+
+	- kurssille rekisteröityminen
+	- kurssin suorittaminen 
+	- statistiikka 

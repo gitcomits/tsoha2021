@@ -1,6 +1,36 @@
 {% extends "layout.html" %}
-{% block content %}
+  {% block content %}
+  <div class="centraliced">
+    <h2>Welcome!</h2>
 
-Courses available: To be updated
+    <p>The world knows the <i>School of Online Studies </i> for its pioneering research and innovative graduates.
+    But from the very beginning, the <i>School of Online Studies </i> has also offered a distinctive form of education,
+    deeply informed by science and technology and founded on hands-on research, real-world problem solving, and a commitment to "learning by doing."
 
+    These principles inspire our teaching in every realm, from engineering, computing, architecture,
+    and management to the natural and social sciences, the humanities, and the arts.
+    We seek to lead in the responsible and ethical evolution of technologies that transform society.
+
+    <i>School of Online Studies </i> is a community eager to solve hard problems in service to the nation and the world.
+    Thanks to our students, faculty, postdocs, staff, and more than 141,000 alumni around the globe,
+    the Institute hums with bold ideas and inspired solutions. We invite you to join us in our work. </p>
+
+    <p> Our present courses include, but are not limited to, the following. </p>
+
+
+    {% for post in posts %}
+    <p> {{ postID }} </p>
+      <article class="media content-section">
+        <img class="rounded-circle aritcle_img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}" alt="">
+        <div class="media-body">
+          <div class="article-metadata">
+            <a class="mr-2" href="#">{{ post.author.username }}</a>
+            <small class="text-muted">{{ post.date_posted.strftime('%d.%m.%Y %H:%M:%S') }}</small>
+          </div>
+          <h2><a class="article-title" href="{{ url_for('post', post_id=post.id)}}">{{ post.title }}</a></h2>
+          <p class="article-content">{{ post.content }}</p>
+        </div>
+      </article>
+    </div>
+  {% endfor %}
 {% endblock content %}

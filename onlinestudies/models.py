@@ -25,10 +25,31 @@ class Post(db.Model):
     title = db.Column(db.String(100), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     content = db.Column(db.Text, nullable=False)
+    course_code = db.Column(db.String(7), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     def __repr__(self):
-        return f"Post('{self.title}', '{self.date_posted}')"
+        return f"Post('{self.title}', '{self.date_posted}', '{self.course_code}')"
+
+
+
+class Quizz(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    course_code = db.Column(db.String(7), nullable=False)
+    question1 = db.Column(db.String(100), nullable=False)
+    answer1 = db.Column(db.String(20), nullable=False)
+    question2 = db.Column(db.String(100), nullable=False)
+    answer2 = db.Column(db.String(20), nullable=False)
+    question3 = db.Column(db.String(100), nullable=False)
+    answer3 = db.Column(db.String(20), nullable=False)
+
+
+class Enroll(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    course_code = db.Column(db.String(7), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+
+
 
 class Courses(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -43,6 +64,5 @@ class Courses(db.Model):
         return f"Course('{self.title}', '{self.user_id}', '{self.created_on}')"
 
 
-
-db.create_all()
-db.session.commit()
+    db.create_all()
+    db.session.commit()
