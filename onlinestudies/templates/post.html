@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
   {% block content %}
+  <div class="centraliced">
 
       <article class="media content-section">
         <img class="rounded-circle aritcle_img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}" alt="">
@@ -30,5 +31,6 @@
             {% endif %}
           </div>
         </div>
+      </div>
       </div>
   {% endblock content %}
