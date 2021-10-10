@@ -103,7 +103,7 @@ def new_post():
         , question2=form.question2.data, answer2=form.answer2.data, question3=form.question3.data, answer3=form.answer3.data)
         db.session.add(quizz)
         db.session.commit()
-        flash('Your post has been created!', 'sucess')
+        flash('New course has been created!', 'sucess')
         return redirect(url_for('home'))
     return render_template('create_post.html', title='New Post', form=form, legend='New post')
 
@@ -135,7 +135,7 @@ def update_post(post_id):
         quizz.question3=form.question3.data
         quizz.answer3=form.answer3.data
         db.session.commit()
-        flash('Your post has been updated!', 'success')
+        flash('The course has been updated!', 'success')
         return redirect(url_for('post', post_id=post.id))
     elif request.method == 'GET':
         form.course_code.data = post.course_code
@@ -158,7 +158,7 @@ def delete_post(post_id):
         abort(403)
     db.session.delete(post)
     db.session.commit()
-    flash('Your post has been deleted!', 'success')
+    flash('The course has been deleted!', 'success')
     return redirect(url_for('home'))
 
 
