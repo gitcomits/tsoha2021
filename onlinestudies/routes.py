@@ -4,8 +4,8 @@ from PIL import Image
 from flask import redirect, render_template, request, url_for, flash, request
 
 from onlinestudies import app, db, bcrypt
-from onlinestudies.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
-from onlinestudies.models import Users, Post, Quizz
+from onlinestudies.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, QuizzAnswersForm
+from onlinestudies.models import Users, Post, Quizz, QuizzAnswers
 from flask_login import login_user, current_user, logout_user, login_required
 
 
@@ -58,6 +58,9 @@ def logout():
     return redirect(url_for('home'))
 
 
+
+
+
 def save_picture(form_picture):
     random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(form_picture.filename)
@@ -108,10 +111,24 @@ def new_post():
     return render_template('create_post.html', title='New Post', form=form, legend='New post')
 
 
+@app.route("/quizz/<int:post_id>", methods=['GET', 'POST'])
+def quizz(post_id):
+    quizz = Quizz.query.get_or_404(post_id)
+    form = QuizzAnswersForm()
+    if form.validate_on_submit():
+        answers = QuizzAnswers(course_code=quizz.course_code,answer1=form.answer1.data,answer2=form.answer2.data,answer3=form.answer3.data,points=3,user_id=current_user)
+#        db.session.add(answers)
+#        db.session.commit()
+        return render_template('quizz.html', title='Quizz',form=form, quizz=quizz, d='disabled', a1=quizz.answer1)
+    return render_template('quizz.html', title='Quizz',form=form, quizz=quizz)
+
+
 @app.route("/post/<int:post_id>")
 def post(post_id):
+
     post = Post.query.get_or_404(post_id)
-    return render_template('post.html', title=post.title, post=post)
+    quizz = Quizz.query.get_or_404(post_id)
+    return render_template('post.html', title=post.title, post=post, quizz=quizz)
 
 
 @app.route("/post/<int:post_id>/update", methods=['GET', 'POST'])
@@ -161,6 +178,19 @@ def delete_post(post_id):
     flash('The course has been deleted!', 'success')
     return redirect(url_for('home'))
 
+#@app.route("/post/<int:post_id>/quizz_done", methods=['POST'])
+#@login_required
+#def post_answers(post_id):
+#    post = Post.query.get_or_404(post_id)
+#    if post.author != current_user:
+#        abort(403)
+#    db.session.delete(post)
+#    db.session.commit()
+#    flash('The course has been deleted!', 'success')
+#    return redirect(url_for('home'))
+
+
+
 
 
 @app.route("/post/<int:post_id>/", methods=['GET', 'POST'])
@@ -173,3 +203,18 @@ def enroll():
     db.session.add(enroll)
     db.session.commit()
     return render_template('create_post.html', title="Update Post", form=form, legend='Update post')
+
+
+
+
+@app.errorhandler(403)
+def page_not_found(e):
+    return render_template('403.html'), 403
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+@app.errorhandler(405)
+def page_not_found(e):
+    return render_template('405.html'), 405

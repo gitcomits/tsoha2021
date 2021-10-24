@@ -43,6 +43,17 @@ class Quizz(db.Model):
     question3 = db.Column(db.String(100), nullable=False)
     answer3 = db.Column(db.String(20), nullable=False)
 
+class QuizzAnswers(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    course_code = db.Column(db.String(7), nullable=False)
+    answer1 = db.Column(db.String(20), nullable=False)
+    answer2 = db.Column(db.String(20), nullable=False)
+    answer3 = db.Column(db.String(20), nullable=False)
+    points = db.Column(db.Integer(), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+
+
+
 
 #class Enroll(db.Model):
 #    id = db.Column(db.Integer, primary_key=True)

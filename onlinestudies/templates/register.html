@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
+<div class="centraliced">
   <div class="cotent-section">
     <form class=" " action=" " method="post">  <!-- when action empty, will return to the same route -->
         {{ form.hidden_tag() }}
@@ -82,6 +83,6 @@
     <small class="text-muted">
         Already Have An Account? <a class"ml-2" href="{{ url_for('login') }}">Sign In</a>  <!-- login = route function (login()), not the name of the route (/login)  -->
     </small>
-
   </div>
+</div>
 {% endblock content %}

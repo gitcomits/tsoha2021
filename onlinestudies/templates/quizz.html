@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="centraliced">
+    <h2>Quick quizz {{ quizz.course_code }}</h2>
+    <div class="cotent-section"> 
+    <form class=" " action=" " method="post">  <!-- when action empty, will return to the same route -->
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group" {{ d }}>
+            <legend class="border-bottom mb-4">Question 1 {{ quizz.question1 }}</legend>
+            <div class="form-group">
+              {{ form.answer1.label(class="form-control-label") }}
+              {% if form.answer1.errors %}
+                  {{ form.answer1(class="form-control form-control-lg is-invalid") }}
+                  <div class="invalid-feedback">
+                    {% for error in form.answer1.errors %}
+                      <span>{{ error }}</span>
+                    {% endfor %}
+                  </div>
+              {% else %}
+                {{ form.answer1(class="form-control form-control-lg")  }}
+
+
+
+              {% endif %}
+            </div>
+            <legend class="border-bottom mb-4">Question 2 {{ quizz.question2 }}</legend>
+            <div class="form-group">
+              {{ form.answer2.label(class="form-control-label") }}
+              {% if form.answer2.errors %}
+                  {{ form.answer2(class="form-control form-control-lg is-invalid") }}
+                  <div class="invalid-feedback">
+                    {% for error in form.answer2.errors %}
+                      <span>{{ error }}</span>
+                    {% endfor %}
+                  </div>
+              {% else %}
+                {{ form.answer2(class="form-control form-control-lg") }}
+              {% endif %}
+            </div>
+            <legend class="border-bottom mb-4">Question 3 {{ quizz.question3 }}</legend>
+            <div class="form-group">
+              {{ form.answer3.label(class="form-control-label") }}
+              {% if form.answer3.errors %}
+                  {{ form.answer3(class="form-control form-control-lg is-invalid") }}
+                  <div class="invalid-feedback">
+                    {% for error in form.answer2.errors %}
+                      <span>{{ error }}</span>
+                    {% endfor %}
+                  </div>
+              {% else %}
+                {{ form.answer3(class="form-control form-control-lg") }}
+              {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+          {{ form.submit(class="btn btn-outline-info") }}
+
+        </div>
+    </form>
+  </div>
+  </div>
+
+
+
+
+{% endblock content %}

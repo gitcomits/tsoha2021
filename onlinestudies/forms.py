@@ -62,3 +62,13 @@ class PostForm(FlaskForm):
     question3 = TextAreaField('Third Question', validators=[DataRequired()])
     answer3 = StringField('Correct answer', validators=[DataRequired()])
     submit = SubmitField('Post')
+
+
+
+class QuizzAnswersForm(FlaskForm):
+    answer1 = StringField('Answer1', validators=[DataRequired()])
+    answer2 = StringField('Answer1', validators=[DataRequired()])
+    answer3 = StringField('Answer1', validators=[DataRequired()])
+    submit = SubmitField('Lock your answers')
+
+

@@ -17,6 +17,7 @@
           <h2 class="article-title">{{ post.title }}</h2>
           {% if current_user.rights == 'Student' %}
           <p>Enrollment, soon to be implemented</p>
+              <a href="{{ url_for('quizz', post_id=post.id)}}">quizz</a>
       <!--  <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('enroll', post_id=post.id, cc=post.course_code)}}">Enroll in course</a>  -->
           {% endif %}
           <p class="article-content">{{ post.content }}</p>
