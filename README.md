@@ -89,3 +89,26 @@ ToDo
 	- kurssille rekisteröityminen
 	- kurssin suorittaminen 
 	- statistiikka 
+
+
+----------------------------------------------------------
+
+25.10.2020
+
+Ohjelma testattavissa 
+
+https://onlin3school.herokuapp.com/
+
+
+Lisätyt ominaisuudet
+
+	Yhtenäiset virhe sivustot (404, 403, 405)
+	Quizz sivusto, Urban planning kurssilla kysymykset liittyvät kurssimateriaalin
+	 
+
+Puuttumaan jäi vielä paljon	
+ 
+	- kursseille ei ole erillistä rekisteröitymistä
+	- quizz kyselyihin vastaaminen ei tallennu
+	- statistiikka jäi puuttumaan
+
